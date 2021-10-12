@@ -1,0 +1,81 @@
+version: '3.8'
+services:
+  influxdb:
+    image: influxdb:2.0
+    container_name: influxdb
+    ports:
+        - '8086:8086'
+    volumes:
+      - influxdb-storage:/var/lib/influxdb2:rw
+    environment: 
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUXDB_USERNAME}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUXDB_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUXDB_BUCKET}
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_TOKEN}
+    entrypoint: ["./entrypoint.sh"]
+    restart: always
+    networks:
+      - monitoring  
+  grafana:
+    container_name: grafana
+    ports:
+        - '3000:3000'
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./grafana-provisioning/:/etc/grafana/provisioning
+    image: 'grafana/grafana:7.3.0'
+    networks:
+      - monitoring  
+    environment: 
+        - "GF_SECURITY_ADMIN_USER=${GRAFANA_USERNAME}"
+        - "GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}"
+    restart: always
+    links:
+        - influxdb
+    depends_on:
+        - influxdb      
+  jmeter:
+    build:
+      context: ./jmeter
+    image: 'jmeter-docker:latest'
+    container_name: jmeter
+    restart: always
+    networks:
+      - monitoring
+    volumes:
+      - ./jmeter/output:/results/output
+    depends_on: 
+      - influxdb
+      - grafana
+  telegraf:
+    image: telegraf:1.17
+    pid: "host"
+    container_name: telegraf
+    ports:
+      - "8092:8092"
+      - "8094:8094"
+      - "8125:8125"
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /sys:/host/sys:ro
+      - /proc:/host/proc:ro
+      - /etc:/host/etc:ro
+    environment:
+      - HOST_PROC=/host/proc
+      - HOST_SYS=/host/sys
+      - HOST_ETC=/host/etc
+    restart: always
+    links:
+        - influxdb
+    depends_on:
+        - influxdb
+    networks:
+      - monitoring  
+networks:
+  monitoring:
+volumes:
+  influxdb-storage:
+  grafana-storage:
