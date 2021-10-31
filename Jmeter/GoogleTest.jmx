@@ -13,11 +13,6 @@
     <hashTree>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments">
-          <elementProp name="testname" elementType="Argument">
-            <stringProp name="Argument.name">testname</stringProp>
-            <stringProp name="Argument.value">smoke</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="date" elementType="Argument">
             <stringProp name="Argument.name">date</stringProp>
             <stringProp name="Argument.value">${__time(dd-MM-yyyy,)}</stringProp>
@@ -38,22 +33,10 @@
         <boolProp name="CacheManager.controlledByThread">false</boolProp>
       </CacheManager>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="false">
-        <stringProp name="delimiter">,</stringProp>
-        <stringProp name="fileEncoding"></stringProp>
-        <stringProp name="filename">/userdetails.csv</stringProp>
-        <boolProp name="ignoreFirstLine">false</boolProp>
-        <boolProp name="quotedData">false</boolProp>
-        <boolProp name="recycle">true</boolProp>
-        <stringProp name="shareMode">shareMode.all</stringProp>
-        <boolProp name="stopThread">false</boolProp>
-        <stringProp name="variableNames">username,password</stringProp>
-      </CSVDataSet>
-      <hashTree/>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
         <stringProp name="delimiter">,</stringProp>
         <stringProp name="fileEncoding"></stringProp>
-        <stringProp name="filename">/userdetails.csv</stringProp>
+        <stringProp name="filename">/ExampleVars.csv</stringProp>
         <boolProp name="ignoreFirstLine">false</boolProp>
         <boolProp name="quotedData">false</boolProp>
         <boolProp name="recycle">false</boolProp>

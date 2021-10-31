@@ -1,7 +1,7 @@
 #!/bin/bash -e
 #define variables to store info
 version=5.3
-scriptname="PetStoreDemo"
+scriptname="GoogleTest"
 #
 # override the HEAP settings and run the jmeter script.
 JVM_ARGS="-Xms512m -Xmx2048m" jmeter -Jjmeter.save.saveservice.subresults=false -n -t /${scriptname}.jmx -l /${scriptname}.jtl -e -o /results/output 2>&1
