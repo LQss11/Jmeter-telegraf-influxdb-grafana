@@ -2,11 +2,12 @@
 Throughout this code you can simply run a jmeter test using several powerful technologies allowing you to easily analyze and monitor your test plans in real time in an automated way (docker-compose).
 ## Main features
 This repo provides several features to the user such as:
--`Load test scenario creation:` In this part we are going to create different environments consisting of multiple IP addresses (containers)
--`Persist test results:` It consists of persisting each test data in a database in addition to a log file and result csv file.
--`Environments monitoring:` It is about monitoring the containers of host docker engine and load test metrics.
--`Dockerize the stack:` Will give us the ability to run tests easier, and not to worry much about the environment we are working on.
+- `Load test scenario creation:` In this part we are going to create different environments consisting of multiple IP addresses (containers)
+- `Persist test results:` It consists of persisting each test data in a database in addition to a log file and result csv file.
+- `Environments monitoring:` It is about monitoring the containers of host docker engine and load test metrics.
+- `Dockerize the stack:` Will give us the ability to run tests easier, and not to worry much about the environment we are working on.
 ## Quick start
+
 Starting the test will only take few steps:
 -This will run our docker-compose file which in fact will build our specified images with context then create and run our containers in  the same network:
 ```sh
