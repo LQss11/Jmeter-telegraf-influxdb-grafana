@@ -39,7 +39,7 @@ RUN ln -nfs /usr/bin/python3 /usr/bin/python
 # copy jmeter script files and any dependency files such as data and libraries
 
 COPY GoogleTest.jmx /GoogleTest.jmx
-COPY ExampleVars.csv /ExampleVars.csv
+COPY *.csv /
 
 # shell script has script to convert Jmeter JTL results file to CSV
 COPY run.sh /run.sh
