@@ -15,6 +15,18 @@ services:
       - influxdb
       - grafana
       - telegraf
+  slave-1:
+    image: 'jmeter-docker:latest'
+    command: jmeter -s -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000 -Jserver.rmi.ssl.disable=true
+    hostname: slave-1
+    tty: true
+    restart: always
+    volumes:
+      - ./jmeter/output:/results/output
+    networks:
+        - monitoring
+    depends_on: 
+      - jmeter
   influxdb:
     image: influxdb:2.0
     container_name: influxdb

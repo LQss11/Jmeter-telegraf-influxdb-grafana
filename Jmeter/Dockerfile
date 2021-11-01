@@ -43,12 +43,13 @@ COPY ExampleVars.csv /ExampleVars.csv
 
 # shell script has script to convert Jmeter JTL results file to CSV
 COPY run.sh /run.sh
-
+COPY run-dist.sh /run-dist.sh
 # Set environment variables.
 ENV HOME /root
 
 # Final cleanup
 RUN apt-get --purge autoremove
 RUN ["chmod", "+x", "/run.sh"]
+RUN ["chmod", "+x", "/run-dist.sh"]
 # Define working directory.
 WORKDIR /
