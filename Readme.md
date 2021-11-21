@@ -23,8 +23,7 @@ Open influx --> Data --> Buckets --> Copy to clipboard Jmeter's Bucker ID
 ```
 -This command will allow us to match a database with our influxdb bucket
 ```sh
-$ influx v1 dbrp create --db jmeter --rp autogen --bucket-id 482b13ff5761a956 --default --org Spark --token mytoken
-
+influx v1 dbrp create --db jmeter --rp autogen --bucket-id $(influx bucket list | grep Jmeter | awk '{print $1}') --default --org Spark --token mytoken
 ```
 -Then connect to jmeter's container:
 ```sh
@@ -36,7 +35,11 @@ $ docker exec -it jmeter bin/bash
 $ ./run.sh
 
 ```
+If you want to run in distributed mode:
+```sh
+$ ./run-dist.sh
 
+```
 ## Tools
 This project was made by a combination of coll tools such as:
 | Tools | Links | Version |
