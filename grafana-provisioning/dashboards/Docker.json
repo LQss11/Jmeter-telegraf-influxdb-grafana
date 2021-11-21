@@ -13,7 +13,7 @@
       }
     ]
   },
-  "description": "by MateusSouzaWeb",
+  "description": "by Docker User",
   "editable": true,
   "gnetId": 11502,
   "graphTooltip": 0,
@@ -23,7 +23,7 @@
     {
       "icon": "external link",
       "tags": [
-        "mateussouzaweb"
+        "Docker User"
       ],
       "type": "dashboards"
     }
@@ -1803,7 +1803,7 @@
   "style": "dark",
   "tags": [
     "docker",
-    "mateussouzaweb"
+    "Docker User"
   ],
   "templating": {
     "list": [
