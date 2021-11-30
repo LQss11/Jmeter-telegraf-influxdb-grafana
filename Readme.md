@@ -9,7 +9,11 @@ This repo provides several features to the user such as:
 ## Quick start
 
 Starting the test will only take few steps:
--This will run our docker-compose file which in fact will build our specified images with context then create and run our containers in  the same network:
+-Clone the repository in:
+```sh
+$ git clone https://github.com/LQss11/Jmeter-telegraf-influxdb-grafana.git
+```
+-The following command will run our docker-compose file which in fact will build our specified images with context then create and run our containers in  the same network:
 ```sh
 $ docker-compose up --build
 ```
