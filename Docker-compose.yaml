@@ -40,7 +40,8 @@ services:
     depends_on: 
       - jmeter
   influxdb:
-    image: influxdb:2.0
+    build:
+      context: ./influxdb
     container_name: influxdb
     ports:
         - '8086:8086'
