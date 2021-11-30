@@ -13,29 +13,16 @@ Starting the test will only take few steps:
 ```sh
 $ docker-compose up --build
 ```
--Once you made sure that influxDb2.0 is running successfully you will need to run this command connect to the influxdb container:
-```sh
-$ docker exec -it influxdb bin/bash
-```
--connect to http://localhost:8086/ using .env username and password select our pre-created bucket then copy its id. 
-```
-Open influx --> Data --> Buckets --> Copy to clipboard Jmeter's Bucker ID
-```
--This command will allow us to match a database with our influxdb bucket
-```sh
-influx v1 dbrp create --db jmeter --rp autogen --bucket-id $(influx bucket list | grep Jmeter | awk '{print $1}') --default --org Spark --token mytoken
-```
 -Then connect to jmeter's container:
 ```sh
 $ docker exec -it jmeter bin/bash
 
 ```
--Finally execute the script inside the container:
+-Finally run one of the following scripts files for either simple load test or a distributed load test:
 ```sh
 $ ./run.sh
 
 ```
-If you want to run in distributed mode:
 ```sh
 $ ./run-dist.sh
 
