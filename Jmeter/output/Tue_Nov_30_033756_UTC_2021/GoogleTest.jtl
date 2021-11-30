@@ -1,9 +1,0 @@
-timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1638243479895,1069,Login jmeter333,200,OK,slave-2-Thread Group 1-1,text,true,,17593,119,1,1,https://www.google.com/,1054,0,890
-1638243479924,1122,Login Test11,200,OK,slave-1-Thread Group 1-1,text,true,,17630,119,1,1,https://www.google.com/,1108,0,951
-1638243482809,489,Login docker,200,OK,slave-2-Thread Group 1-2,text,true,,17577,119,1,1,https://www.google.com/,458,0,322
-1638243485805,399,Login grafana,200,OK,slave-2-Thread Group 1-3,text,true,,17611,119,1,1,https://www.google.com/,359,0,230
-1638243488797,405,Login admin,200,OK,slave-2-Thread Group 1-4,text,true,,17590,119,1,1,https://www.google.com/,372,0,239
-1638243482850,451,Login NewTest,200,OK,slave-1-Thread Group 1-2,text,true,,17638,119,1,1,https://www.google.com/,429,0,278
-1638243485844,417,Login Slave,200,OK,slave-1-Thread Group 1-3,text,true,,17637,119,1,1,https://www.google.com/,392,0,265
-1638243488841,428,Login Master,200,OK,slave-1-Thread Group 1-4,text,true,,17536,119,1,1,https://www.google.com/,399,0,277

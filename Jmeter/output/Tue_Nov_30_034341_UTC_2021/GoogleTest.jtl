@@ -1,5 +1,0 @@
-timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1638243824520,521,Login Test11,200,OK,Thread Group 1-1,text,true,,17630,119,1,1,https://www.google.com/,495,0,356
-1638243827433,422,Login NewTest,200,OK,Thread Group 1-2,text,true,,17625,119,1,1,https://www.google.com/,390,0,272
-1638243830427,461,Login Slave,200,OK,Thread Group 1-3,text,true,,17630,119,1,1,https://www.google.com/,434,0,285
-1638243833430,442,Login Master,200,OK,Thread Group 1-4,text,true,,17655,119,1,1,https://www.google.com/,405,0,288
