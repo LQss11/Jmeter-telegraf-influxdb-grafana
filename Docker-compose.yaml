@@ -6,6 +6,7 @@ services:
     image: 'jmeter-docker:latest'
     container_name: jmeter
     restart: always
+    hostname: jmeter
     networks:
       - monitoring
     volumes:
