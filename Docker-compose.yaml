@@ -11,6 +11,9 @@ services:
       - monitoring
     volumes:
       - ./jmeter/output:/results/output
+      - ./jmeter/run-dist.sh:/run-dist.sh   
+      - ./jmeter/run.sh:/run.sh      
+
     tty: true
     depends_on: 
       - influxdb
@@ -47,7 +50,7 @@ services:
         - '8086:8086'
     volumes:
       - influxdb-storage:/var/lib/influxdb2:rw
-      - "./influxdb/datav1.csv:/docker-entrypoint-initdb.d/datav1.csv"  
+      - "./influxdb/datav1.sh:/docker-entrypoint-initdb.d/datav1.sh"  
     environment: 
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUXDB_USERNAME}
