@@ -1,3 +1,3 @@
 FROM influxdb:2.0
 
-COPY run.sh /docker-entrypoint-initdb.d/run.sh
+COPY datav1.sh /docker-entrypoint-initdb.d/datav1.sh
