@@ -38,18 +38,16 @@ RUN ln -nfs /usr/bin/python3 /usr/bin/python
 
 # copy jmeter script files and any dependency files such as data and libraries
 
-COPY GoogleTest.jmx /GoogleTest.jmx
-COPY *.csv /
+COPY /JMX /JMX
+COPY /CSV /CSV
 
 # shell script has script to convert Jmeter JTL results file to CSV
-COPY run.sh /run.sh
-COPY run-dist.sh /run-dist.sh
+COPY /Scripts /Scripts
 # Set environment variables.
 ENV HOME /root
 
 # Final cleanup
 RUN apt-get --purge autoremove
-RUN ["chmod", "+x", "/run.sh"]
-RUN ["chmod", "+x", "/run-dist.sh"]
+RUN ["chmod", "+x", "/Scripts"]
 # Define working directory.
 WORKDIR /

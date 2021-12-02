@@ -11,9 +11,9 @@ services:
       - monitoring
     volumes:
       - ./jmeter/output:/results/output
-      - ./jmeter/run-dist.sh:/run-dist.sh   
-      - ./jmeter/run.sh:/run.sh      
-
+      - ./jmeter/CSV:/CSV
+      - ./jmeter/JMX:/JMX
+      - ./jmeter/Scripts:/Scripts
     tty: true
     depends_on: 
       - influxdb

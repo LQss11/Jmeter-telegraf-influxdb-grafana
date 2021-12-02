@@ -19,11 +19,11 @@ $ docker-compose up --build
 ```
 -Then connect to jmeter's container and chose whether you want to run the load test in a single machine (run.sh) or in a distributed mode (run-dist.sh):
 ```sh
-docker exec -it jmeter bin/bash ./run.sh
+docker exec -it jmeter bin/bash ./Scripts/run.sh
 
 ```
 ```sh
-docker exec -it jmeter bin/bash ./run-dist.sh
+docker exec -it jmeter bin/bash ./Scripts/run-dist.sh
 
 ```
 ## Tools
