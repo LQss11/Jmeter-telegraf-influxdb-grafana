@@ -63,13 +63,13 @@ services:
     networks:
       - monitoring  
   grafana:
+    image: 'grafana/grafana:7.3.0'  
     container_name: grafana
     ports:
         - '3000:3000'
     volumes:
       - grafana-storage:/var/lib/grafana
       - ./grafana-provisioning/:/etc/grafana/provisioning
-    image: 'grafana/grafana:7.3.0'
     networks:
       - monitoring  
     environment: 
@@ -81,7 +81,7 @@ services:
     depends_on:
         - influxdb      
   telegraf:
-    image: telegraf:1.17
+    image: telegraf:1.21.1
     pid: "host"
     container_name: telegraf
     ports:
