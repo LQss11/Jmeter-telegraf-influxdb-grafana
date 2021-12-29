@@ -33,7 +33,7 @@ This project was made by a combination of coll tools such as:
 | InfluxDB | [Official website](https://www.influxdata.com/) | influxdb:2.0 |
 | Grafana | [Official website](https://grafana.com/) | grafana/grafana:7.3.0 |
 | Apache Jmeter | [Official website](https://jmeter.apache.org/) | JMETER 5.3 |
-| Telegraf | [Git](https://github.com/influxdata/telegraf/) | telegraf:1.17 |
+| Telegraf | [Git](https://github.com/influxdata/telegraf/) | telegraf:1.21 |
 | Docker | [Official website](https://www.docker.com/) | Docker 20.10.7 |
 ## Additional information
 1. .env file contains all variables used for the docker-compose.yml file
