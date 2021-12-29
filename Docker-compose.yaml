@@ -27,6 +27,9 @@ services:
     restart: always
     volumes:
       - ./jmeter/output:/results/output
+      - ./jmeter/CSV:/CSV
+      - ./jmeter/JMX:/JMX
+      - ./jmeter/Scripts:/Scripts      
     networks:
         - monitoring
     depends_on: 
@@ -39,6 +42,9 @@ services:
     restart: always
     volumes:
       - ./jmeter/output:/results/output
+      - ./jmeter/CSV:/CSV
+      - ./jmeter/JMX:/JMX
+      - ./jmeter/Scripts:/Scripts      
     networks:
         - monitoring
     depends_on: 
