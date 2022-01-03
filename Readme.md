@@ -17,9 +17,6 @@ $ git clone https://github.com/LQss11/Jmeter-telegraf-influxdb-grafana.git
 ```sh
 $ docker-compose up --build
 ```
-```sh
-docker exec -it telegraf /bin/bash chmod 666 /var/run/docker.sock
-```
 -Then connect to jmeter's container and chose whether you want to run the load test in a single machine (run.sh) or in a distributed mode (run-dist.sh):
 ```sh
 docker exec -it jmeter bin/bash ./Scripts/run.sh
