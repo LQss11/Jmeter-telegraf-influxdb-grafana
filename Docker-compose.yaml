@@ -87,7 +87,8 @@ services:
     depends_on:
         - influxdb      
   telegraf:
-    image: telegraf:1.21
+    build:
+      context: ./telegraf
     pid: "host"  
     container_name: telegraf
     ports:
@@ -95,6 +96,7 @@ services:
       - "8094:8094"
       - "8125:8125"
     volumes:
+      #- ./telegraf/sock.sh:/entrypoint.sh
       - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
