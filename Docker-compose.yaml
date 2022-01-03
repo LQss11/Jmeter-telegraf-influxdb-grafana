@@ -96,7 +96,6 @@ services:
       - "8094:8094"
       - "8125:8125"
     volumes:
-      #- ./telegraf/sock.sh:/entrypoint.sh
       - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
