@@ -1,7 +1,9 @@
 #!/bin/bash -e
 #define variables to store info
 version=5.3
-scriptname="GoogleTest"
+echo "Enter the JMX filename that is inside the /JMX directory (eg: examplefilename)"
+read jmx_file_name
+scriptname=$jmx_file_name
 DN="`date`"
 DATE_NOW=${DN// /_}
 JVM_ARGS="-Xms512m -Xmx2048m" jmeter -Jjmeter.save.saveservice.subresults=false -n -t /JMX/${scriptname}.jmx -f -l /results/output/$DATE_NOW/${scriptname}.jtl  -e -o /results/output/$DATE_NOW/dashboard -j /results/output/$DATE_NOW/jmeter.log 2>&1
