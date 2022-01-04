@@ -21,8 +21,7 @@
   "editable": true,
   "gnetId": 5496,
   "graphTooltip": 0,
-  "id": 10,
-  "iteration": 1630351387586,
+  "iteration": 1641265061803,
   "links": [],
   "panels": [
     {
@@ -66,8 +65,8 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 7,
-        "w": 4,
+        "h": 3,
+        "w": 3,
         "x": 0,
         "y": 1
       },
@@ -186,9 +185,9 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 7,
-        "w": 4,
-        "x": 4,
+        "h": 3,
+        "w": 3,
+        "x": 3,
         "y": 1
       },
       "height": "",
@@ -286,246 +285,6 @@
       "colorValue": true,
       "colors": [
         "#299c46",
-        "#e24d42",
-        "#d44a3a"
-      ],
-      "datasource": "$data_source",
-      "decimals": 0,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "bytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 4,
-        "x": 8,
-        "y": 1
-      },
-      "height": "",
-      "id": 38,
-      "interval": "[[send_interval]]s",
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": " ",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "#bf1b00",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(\"rb\") FROM \"$measurement_name\" WHERE (\"transaction\" = 'all' AND \"application\" =~ /^$application$/) AND $timeFilter ",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": "",
-      "title": "Received Bytes",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "0",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": true,
-      "colors": [
-        "#299c46",
-        "#e24d42",
-        "#d44a3a"
-      ],
-      "datasource": "$data_source",
-      "decimals": 0,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "bytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 4,
-        "x": 12,
-        "y": 1
-      },
-      "height": "",
-      "id": 37,
-      "interval": "[[send_interval]]s",
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": " ",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "#bf1b00",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT max(\"sb\") FROM \"$measurement_name\" WHERE (\"transaction\" = 'all' AND \"application\" =~ /^$application$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": "",
-      "title": "Sent Bytes",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "0",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": true,
-      "colors": [
-        "#299c46",
         "#ef843c",
         "#e24d42"
       ],
@@ -546,9 +305,9 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 16,
+        "h": 6,
+        "w": 4,
+        "x": 6,
         "y": 1
       },
       "id": 29,
@@ -641,17 +400,14 @@
     },
     {
       "aliasColors": {
-        "No of Errors": "#6ED0E0",
-        "Req / s": "#6ed0e0",
-        "Req / sec": "#65c5db"
+        "Threads": "#614d93",
+        "threads": "#614d93"
       },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "$data_source",
-      "decimals": 2,
-      "editable": true,
-      "error": false,
+      "decimals": 0,
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -661,24 +417,21 @@
       "fill": 7,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 0,
-        "y": 8
+        "h": 6,
+        "w": 5,
+        "x": 10,
+        "y": 1
       },
       "hiddenSeries": false,
-      "id": 4,
+      "id": 31,
       "interval": "[[send_interval]]s",
       "legend": {
         "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "rightSide": false,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
         "show": true,
-        "sort": null,
-        "sortDesc": null,
         "total": false,
         "values": true
       },
@@ -691,7 +444,7 @@
       },
       "percentage": false,
       "pluginVersion": "7.3.0",
-      "pointradius": 1,
+      "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -700,7 +453,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "Req / s",
+          "alias": "Threads",
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -708,51 +461,43 @@
                 "$__interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
             }
           ],
-          "measurement": "jmeter",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"count\") / $send_interval FROM \"$measurement_name\" WHERE (\"transaction\" = 'all' AND \"application\" =~ /^$application$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "query": "SELECT last(\"maxAT\") FROM \"$measurement_name\" WHERE (\"transaction\" = 'internal' AND \"application\" =~ /^$application$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
           "rawQuery": true,
-          "refId": "B",
+          "refId": "A",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "count"
+                  "value"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "last"
+                "type": "mean"
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "transaction",
-              "operator": "=",
-              "value": "all"
-            },
-            {
-              "condition": "AND",
-              "key": "application",
-              "operator": "=~",
-              "value": "/^$application$/"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Total Throughput",
+      "title": "Active Threads",
       "tooltip": {
-        "msResolution": false,
         "shared": true,
         "sort": 0,
         "value_type": "individual"
@@ -767,6 +512,7 @@
       },
       "yaxes": [
         {
+          "decimals": 0,
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -780,7 +526,7 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": false
+          "show": true
         }
       ],
       "yaxis": {
@@ -809,10 +555,10 @@
       "fill": 7,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 8,
-        "y": 8
+        "h": 6,
+        "w": 5,
+        "x": 15,
+        "y": 1
       },
       "hiddenSeries": false,
       "id": 2,
@@ -943,14 +689,17 @@
     },
     {
       "aliasColors": {
-        "Threads": "#614d93",
-        "threads": "#614d93"
+        "No of Errors": "#6ED0E0",
+        "Req / s": "#6ed0e0",
+        "Req / sec": "#65c5db"
       },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "$data_source",
-      "decimals": 0,
+      "decimals": 2,
+      "editable": true,
+      "error": false,
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -960,21 +709,24 @@
       "fill": 7,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 16,
-        "y": 8
+        "h": 6,
+        "w": 4,
+        "x": 20,
+        "y": 1
       },
       "hiddenSeries": false,
-      "id": 31,
+      "id": 4,
       "interval": "[[send_interval]]s",
       "legend": {
         "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
         "show": true,
+        "sort": null,
+        "sortDesc": null,
         "total": false,
         "values": true
       },
@@ -987,7 +739,7 @@
       },
       "percentage": false,
       "pluginVersion": "7.3.0",
-      "pointradius": 5,
+      "pointradius": 1,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -996,7 +748,163 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "Threads",
+          "alias": "Req / s",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"count\") / $send_interval FROM \"$measurement_name\" WHERE (\"transaction\" = 'all' AND \"application\" =~ /^$application$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "transaction",
+              "operator": "=",
+              "value": "all"
+            },
+            {
+              "condition": "AND",
+              "key": "application",
+              "operator": "=~",
+              "value": "/^$application$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Total Throughput",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "#e24d42",
+        "#d44a3a"
+      ],
+      "datasource": "$data_source",
+      "decimals": 0,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "bytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 0,
+        "y": 4
+      },
+      "height": "",
+      "id": 38,
+      "interval": "[[send_interval]]s",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": " ",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "#bf1b00",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
           "dsType": "influxdb",
           "groupBy": [
             {
@@ -1014,7 +922,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT last(\"maxAT\") FROM \"$measurement_name\" WHERE (\"transaction\" = 'internal' AND \"application\" =~ /^$application$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "query": "SELECT sum(\"rb\") FROM \"$measurement_name\" WHERE (\"transaction\" = 'all' AND \"application\" =~ /^$application$/) AND $timeFilter ",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1035,47 +943,138 @@
           "tags": []
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Active Threads",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
+      "thresholds": "",
+      "title": "Received Bytes",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
         {
-          "decimals": 0,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+          "op": "=",
+          "text": "0",
+          "value": "null"
         }
       ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "#e24d42",
+        "#d44a3a"
+      ],
+      "datasource": "$data_source",
+      "decimals": 0,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "bytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 3,
+        "y": 4
+      },
+      "height": "",
+      "id": 37,
+      "interval": "[[send_interval]]s",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": " ",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "#bf1b00",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT max(\"sb\") FROM \"$measurement_name\" WHERE (\"transaction\" = 'all' AND \"application\" =~ /^$application$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": "",
+      "title": "Sent Bytes",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "0",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
     },
     {
       "aliasColors": {
@@ -1098,9 +1097,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 24,
+        "w": 12,
         "x": 0,
-        "y": 15
+        "y": 7
       },
       "height": "",
       "hiddenSeries": false,
@@ -1266,9 +1265,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 24,
-        "x": 0,
-        "y": 22
+        "w": 12,
+        "x": 12,
+        "y": 7
       },
       "height": "",
       "hiddenSeries": false,
@@ -1446,217 +1445,228 @@
       }
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 14
       },
       "id": 34,
-      "panels": [
-        {
-          "columns": [],
-          "datasource": "$data_source",
-          "fontSize": "100%",
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 0,
-            "y": 2
-          },
-          "height": "",
-          "id": 25,
-          "interval": "[[send_interval]]s",
-          "links": [],
-          "pageSize": null,
-          "scroll": true,
-          "showHeader": true,
-          "sort": {
-            "col": 2,
-            "desc": true
-          },
-          "styles": [
-            {
-              "alias": "Time",
-              "align": "auto",
-              "dateFormat": "YYYY-MM-DD HH:mm:ss",
-              "pattern": "Time",
-              "type": "hidden"
-            },
-            {
-              "alias": "",
-              "align": "auto",
-              "colorMode": null,
-              "colors": [
-                "rgba(245, 54, 54, 0.9)",
-                "rgba(237, 129, 40, 0.89)",
-                "rgba(50, 172, 45, 0.97)"
-              ],
-              "decimals": 0,
-              "pattern": "/.*/",
-              "thresholds": [],
-              "type": "number",
-              "unit": "short"
-            }
-          ],
-          "targets": [
-            {
-              "alias": "$tag_transaction",
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "transaction"
-                  ],
-                  "type": "tag"
-                }
-              ],
-              "measurement": "jmeter",
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT sum(\"count\") FROM \"$measurement_name\" WHERE (\"application\" =~ /^$application$/ AND \"statut\" = 'ko') AND $timeFilter GROUP BY \"transaction\"",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "table",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "count"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "sum"
-                  }
-                ]
-              ],
-              "tags": [
-                {
-                  "key": "application",
-                  "operator": "=~",
-                  "value": "/^$application$/"
-                },
-                {
-                  "condition": "AND",
-                  "key": "statut",
-                  "operator": "=",
-                  "value": "ko"
-                }
-              ]
-            }
-          ],
-          "title": "Errors per Transaction",
-          "transform": "table",
-          "type": "table-old"
-        },
-        {
-          "columns": [],
-          "datasource": "$data_source",
-          "fontSize": "100%",
-          "gridPos": {
-            "h": 7,
-            "w": 16,
-            "x": 8,
-            "y": 2
-          },
-          "id": 27,
-          "interval": "[[send_interval]]s",
-          "links": [],
-          "pageSize": null,
-          "scroll": true,
-          "showHeader": true,
-          "sort": {
-            "col": 0,
-            "desc": true
-          },
-          "styles": [
-            {
-              "alias": "Time",
-              "align": "auto",
-              "dateFormat": "YYYY-MM-DD HH:mm:ss",
-              "pattern": "Time",
-              "type": "hidden"
-            },
-            {
-              "alias": "",
-              "align": "auto",
-              "colorMode": null,
-              "colors": [
-                "rgba(245, 54, 54, 0.9)",
-                "rgba(237, 129, 40, 0.89)",
-                "rgba(50, 172, 45, 0.97)"
-              ],
-              "decimals": 0,
-              "pattern": "/.*/",
-              "thresholds": [],
-              "type": "number",
-              "unit": "short"
-            }
-          ],
-          "targets": [
-            {
-              "alias": "$tag_responseCode",
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "responseCode"
-                  ],
-                  "type": "tag"
-                }
-              ],
-              "measurement": "jmeter",
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT sum(\"count\") FROM \"$measurement_name\" WHERE (\"application\" =~ /^$application$/ AND \"responseCode\" !~ /^$/) AND $timeFilter GROUP BY \"responseCode\",\"responseMessage\"",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "table",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "count"
-                    ],
-                    "type": "field"
-                  }
-                ],
-                [
-                  {
-                    "params": [
-                      "responseMessage"
-                    ],
-                    "type": "field"
-                  }
-                ]
-              ],
-              "tags": [
-                {
-                  "key": "application",
-                  "operator": "=~",
-                  "value": "/^$application$/"
-                },
-                {
-                  "condition": "AND",
-                  "key": "responseCode",
-                  "operator": "!~",
-                  "value": "/^$/"
-                }
-              ]
-            }
-          ],
-          "title": "Error Info",
-          "transform": "table",
-          "type": "table-old"
-        }
-      ],
+      "panels": [],
       "repeat": null,
       "title": "Errors",
       "type": "row"
+    },
+    {
+      "columns": [],
+      "datasource": "$data_source",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 15
+      },
+      "height": "",
+      "id": 25,
+      "interval": "[[send_interval]]s",
+      "links": [],
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 2,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "alias": "$tag_transaction",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "transaction"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT sum(\"count\") FROM \"$measurement_name\" WHERE (\"application\" =~ /^$application$/ AND \"statut\" = 'ko') AND $timeFilter GROUP BY \"transaction\"",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "application",
+              "operator": "=~",
+              "value": "/^$application$/"
+            },
+            {
+              "condition": "AND",
+              "key": "statut",
+              "operator": "=",
+              "value": "ko"
+            }
+          ]
+        }
+      ],
+      "title": "Errors per Transaction",
+      "transform": "table",
+      "type": "table-old"
+    },
+    {
+      "columns": [],
+      "datasource": "$data_source",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 7,
+        "w": 16,
+        "x": 8,
+        "y": 15
+      },
+      "id": 27,
+      "interval": "[[send_interval]]s",
+      "links": [],
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "alias": "$tag_responseCode",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "responseCode"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT sum(\"count\") FROM \"$measurement_name\" WHERE (\"application\" =~ /^$application$/ AND \"responseCode\" !~ /^$/) AND $timeFilter GROUP BY \"responseCode\",\"responseMessage\"",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "responseMessage"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "application",
+              "operator": "=~",
+              "value": "/^$application$/"
+            },
+            {
+              "condition": "AND",
+              "key": "responseCode",
+              "operator": "!~",
+              "value": "/^$/"
+            }
+          ]
+        }
+      ],
+      "title": "Error Info",
+      "transform": "table",
+      "type": "table-old"
     },
     {
       "collapsed": false,
@@ -1665,7 +1675,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 30
+        "y": 22
       },
       "id": 35,
       "panels": [],
@@ -1701,10 +1711,10 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 7,
-        "w": 8,
+        "h": 5,
+        "w": 4,
         "x": 0,
-        "y": 31
+        "y": 23
       },
       "id": 9,
       "interval": "[[send_interval]]s",
@@ -1835,10 +1845,10 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 8,
-        "y": 31
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 23
       },
       "id": 6,
       "interval": "[[send_interval]]s",
@@ -1969,10 +1979,10 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 7,
+        "h": 5,
         "w": 8,
-        "x": 16,
-        "y": 31
+        "x": 8,
+        "y": 23
       },
       "id": 8,
       "interval": "[[send_interval]]s",
@@ -2077,6 +2087,143 @@
     },
     {
       "aliasColors": {
+        "Num of Errors": "#bf1b00",
+        "num of errors": "#bf1b00"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$data_source",
+      "decimals": 0,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 7,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 8,
+        "x": 16,
+        "y": 23
+      },
+      "hiddenSeries": false,
+      "id": 32,
+      "interval": "[[send_interval]]s",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.0",
+      "pointradius": 1,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Num of Errors",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT sum(\"count\") FROM \"$measurement_name\" WHERE \"application\" =~ /^$application$/ AND \"transaction\" =~ /^$transaction$/ AND \"statut\" = 'ko' AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Errors",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": 1,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
         "90th Percentage": "#EAB839",
         "95th Percentage": "#EF843C",
         "99th Percentage": "#99440A",
@@ -2103,7 +2250,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 38
+        "y": 28
       },
       "height": "",
       "hiddenSeries": false,
@@ -2239,143 +2386,6 @@
     },
     {
       "aliasColors": {
-        "Num of Errors": "#bf1b00",
-        "num of errors": "#bf1b00"
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "$data_source",
-      "decimals": 0,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 7,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 38
-      },
-      "hiddenSeries": false,
-      "id": 32,
-      "interval": "[[send_interval]]s",
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": true,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.3.0",
-      "pointradius": 1,
-      "points": true,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "Num of Errors",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(\"count\") FROM \"$measurement_name\" WHERE \"application\" =~ /^$application$/ AND \"transaction\" =~ /^$transaction$/ AND \"statut\" = 'ko' AND $timeFilter GROUP BY time($__interval) fill(null)",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Errors",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": 1,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 0,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {
         "90th Percentage": "#f2c96d",
         "95th Percentage": "#EF843C",
         "99th Percentage": "#bf1b00",
@@ -2401,9 +2411,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 24,
-        "x": 0,
-        "y": 45
+        "w": 12,
+        "x": 12,
+        "y": 28
       },
       "height": "",
       "hiddenSeries": false,
@@ -2823,9 +2833,9 @@
     "list": [
       {
         "current": {
-          "selected": true,
-          "text": "JMETER",
-          "value": "JMETER"
+          "selected": false,
+          "text": "Jmeter",
+          "value": "Jmeter"
         },
         "error": null,
         "hide": 0,
@@ -2844,9 +2854,10 @@
       {
         "allValue": null,
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "Portainer",
-          "value": "Portainer"
+          "text": "None",
+          "value": ""
         },
         "datasource": "$data_source",
         "definition": "",
@@ -2871,9 +2882,10 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "Containers",
-          "value": "Containers"
+          "isNone": true,
+          "selected": true,
+          "text": "None",
+          "value": ""
         },
         "datasource": "$data_source",
         "definition": "",
@@ -2936,7 +2948,7 @@
     ]
   },
   "time": {
-    "from": "now-7d",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {

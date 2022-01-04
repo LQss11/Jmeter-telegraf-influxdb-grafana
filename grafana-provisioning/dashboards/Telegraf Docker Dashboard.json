@@ -1,46 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_JMETER",
-      "label": "Jmeter",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "influxdb",
-      "pluginName": "InfluxDB"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "7.3.0"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "influxdb",
-      "name": "InfluxDB",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "singlestat",
-      "name": "Singlestat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table-old",
-      "name": "Table (old)",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -62,8 +20,7 @@
   "editable": true,
   "gnetId": 11502,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1641261901686,
+  "iteration": 1641264287042,
   "links": [
     {
       "icon": "external link",
@@ -1600,7 +1557,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_JMETER}",
+      "datasource": "$data_source",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -1649,19 +1606,12 @@
       "targets": [
         {
           "alias": "$tag_container_name",
-          "dsType": "influxdb",
           "groupBy": [
             {
               "params": [
-                "$interval"
+                "$__interval"
               ],
               "type": "time"
-            },
-            {
-              "params": [
-                "container_name"
-              ],
-              "type": "tag"
             },
             {
               "params": [
@@ -1670,38 +1620,28 @@
               "type": "fill"
             }
           ],
-          "measurement": "docker_container_mem",
           "orderByTime": "ASC",
           "policy": "default",
+          "query": "SELECT last(\"usage_percent\") FROM \"docker_container_mem\" WHERE (\"container_image\" =~ /^$container$/ AND \"host\" =~ /^$host$/) AND $timeFilter GROUP BY time($interval), \"container_name\" fill(null)",
+          "queryType": "randomWalk",
+          "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "usage_percent"
+                  "value"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "last"
+                "type": "mean"
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "container_image",
-              "operator": "=~",
-              "value": "/^$container$/"
-            },
-            {
-              "condition": "AND",
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$host$/"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": [],
@@ -2622,13 +2562,23 @@
           }
         ],
         "query": "1s,5s,10s,15s,30s,1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+        "queryValue": "",
         "refresh": 2,
         "skipUrlSync": false,
         "type": "interval"
       },
       {
         "allValue": null,
-        "current": {},
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
         "datasource": "$data_source",
         "definition": "",
         "error": null,
@@ -2651,7 +2601,11 @@
       },
       {
         "allValue": null,
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": "$data_source",
         "definition": "",
         "error": null,
@@ -2695,8 +2649,8 @@
     ]
   },
   "time": {
-    "from": "2022-01-04T02:01:54.446Z",
-    "to": "2022-01-04T02:03:29.433Z"
+    "from": "now-5m",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
