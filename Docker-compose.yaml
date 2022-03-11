@@ -20,6 +20,8 @@ services:
       - grafana
       - telegraf
   slave-1:
+    build:
+      context: ./jmeter
     image: 'jmeter-docker:latest'
     command: jmeter -s -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000 -Jserver.rmi.ssl.disable=true
     hostname: slave-1
@@ -35,6 +37,8 @@ services:
     depends_on: 
       - jmeter
   slave-2:
+    build:
+      context: ./jmeter
     image: 'jmeter-docker:latest'
     command: jmeter -s -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000 -Jserver.rmi.ssl.disable=true
     hostname: slave-2
