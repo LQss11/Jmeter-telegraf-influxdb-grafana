@@ -24,7 +24,12 @@ docker exec -it jmeter bin/bash ./Scripts/run.sh
 ```
 ```sh
 docker exec -it jmeter bin/bash ./Scripts/run-dist.sh
+```
 
+## IMPORTANT!
+In case telegraf has an issue collecting data to influxdb make sure to give permissions to docker.sock inside the container:
+```sh
+docker exec -it telegraf sh -c "chmod 777 /var/run/docker.sock"
 ```
 ## Tools
 This project was made by a combination of coll tools such as:
