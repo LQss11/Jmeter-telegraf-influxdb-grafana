@@ -60,7 +60,7 @@ services:
         - '8086:8086'
     volumes:
       - influxdb-storage:/var/lib/influxdb2:rw
-      - "./influxdb/datav1.sh:/docker-entrypoint-initdb.d/datav1.sh"  
+      - ./influxdb/datav1.sh:/docker-entrypoint-initdb.d/datav1.sh
     environment: 
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUXDB_USERNAME}
@@ -68,8 +68,7 @@ services:
       - DOCKER_INFLUXDB_INIT_ORG=${INFLUXDB_ORG}
       - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUXDB_BUCKET}
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_TOKEN}
-    entrypoint: ["./entrypoint.sh"]
-    restart: always
+    restart: on-failure:5
     networks:
       - monitoring  
   grafana:
@@ -89,28 +88,46 @@ services:
     links:
         - influxdb
     depends_on:
-        - influxdb      
+        - influxdb  
+# https://github.com/influxdata/telegraf/blob/master/plugins/inputs/docker/README.md        
+  # telegraf:
+  #   image: telegraf:1.21.2
+  #   volumes:
+  #     - ./telegraf/telegraf-docker.conf:/etc/telegraf/telegraf.conf:ro  
+  #     - /:/hostfs:ro # Monitoring Docker Engine Host 
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   environment:
+  #   # Monitoring Docker Engine Host
+  #     - HOST_ETC=/hostfs/etc 
+  #     - HOST_PROC=/hostfs/proc 
+  #     - HOST_SYS=/hostfs/sys 
+  #     - HOST_VAR=/hostfs/var 
+  #     - HOST_RUN=/hostfs/run 
+  #     - HOST_MOUNT_PREFIX=/hostfs 
   telegraf:
-    build:
-      context: ./telegraf
+    image: telegraf:1.21
     pid: "host"  
     container_name: telegraf
     ports:
       - "8092:8092"
       - "8094:8094"
       - "8125:8125"
+    user: telegraf:1000
     volumes:
       - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
       - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/bin/docker:/usr/bin/docker
-      - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose      
-      - /sys:/host/sys:ro
-      - /proc:/host/proc:ro
-      - /etc:/host/etc:ro
+      #- /usr/bin/docker:/usr/bin/docker    
+      # - /sys:/host/sys:ro
+      # - /proc:/host/proc:ro
+      # - /etc:/host/etc:ro
     environment:
-      - HOST_PROC=/host/proc
-      - HOST_SYS=/host/sys
-      - HOST_ETC=/host/etc
+    # Monitoring Docker Engine Host
+      - HOST_ETC=/hostfs/etc 
+      - HOST_PROC=/hostfs/proc 
+      - HOST_SYS=/hostfs/sys 
+      - HOST_VAR=/hostfs/var 
+      - HOST_RUN=/hostfs/run 
+      - HOST_MOUNT_PREFIX=/hostfs 
     restart: always
     links:
         - influxdb
