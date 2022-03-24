@@ -6,6 +6,10 @@ version=5.3
 # Read filename
 while echo "Enter the JMX filename that is inside the /JMX directory (eg: examplefilename)"; do
 
+    # echo "You can use one of the following files.."
+    # for FILE in ../JMX/*; do
+    #     echo $FILE
+    # done
     read jmx_file_name
     scriptname=$jmx_file_name
     FILE=../JMX/$jmx_file_name.jmx
