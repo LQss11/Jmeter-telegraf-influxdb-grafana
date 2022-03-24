@@ -58,7 +58,7 @@ services:
       - jmeter
   # INFLUXDB SVC
   influxdb:
-    image: influxdb:2.0
+    image: influxdb:2.0-alpine
     container_name: influxdb
     ports:
         - '8086:8086'
