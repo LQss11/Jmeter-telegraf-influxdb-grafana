@@ -12,14 +12,13 @@ ENV JMETER_PLUGINS_DOWNLOAD_URL https://repo1.maven.org/maven2/kg/apc
 ENV JMETER_PLUGINS_FOLDER ${JMETER_HOME}/lib/ext/
 ENV PATH $PATH:$JMETER_BIN
 ENV DEBIAN_FRONTEND noninteractive
-
 # Install Everything.
 RUN \
   sed -i -e 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
-  apt-get install -y byobu openjdk-8-jre curl && \
+  apt-get install -y byobu openjdk-8-jre curl git htop man unzip vim wget python3-pip && \
   mkdir -p /tmp/dependencies &&   \
   curl -L --silent ${JMETER_DOWNLOAD_URL} >  /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz &&  \
   mkdir -p /opt && \
@@ -33,6 +32,9 @@ RUN curl -L --silent ${JMETER_PLUGINS_DOWNLOAD_URL}/cmdrunner/${CMDRUNNER_VERSIO
     PluginsManagerCMD.sh install jpgc-cmd=2.2,jpgc-dummy=0.4,jpgc-filterresults=2.2,jpgc-synthesis=2.2,jpgc-graphs-basic=2.0 \
     && jmeter --version \
     && PluginsManagerCMD.sh status 
+RUN ln -nsf /usr/bin/pip3 /usr/bin/pip
+RUN ln -nfs /usr/bin/python3 /usr/bin/python
+#RUN pip3 install awscli && pip3 install xmltodict
 
 # copy jmeter script files and any dependency files such as data and libraries
 
