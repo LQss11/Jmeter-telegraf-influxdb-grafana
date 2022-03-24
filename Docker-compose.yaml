@@ -3,6 +3,7 @@ services:
   jmeter:
     build:
       context: ./jmeter
+      dockerfile: ./Dockerfile
     image: 'jmeter-docker:latest'
     container_name: jmeter
     restart: always
@@ -22,6 +23,7 @@ services:
   slave-1:
     build:
       context: ./jmeter
+      dockerfile: ./Dockerfile
     image: 'jmeter-docker:latest'
     command: jmeter -s -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000 -Jserver.rmi.ssl.disable=true
     hostname: slave-1
@@ -39,6 +41,7 @@ services:
   slave-2:
     build:
       context: ./jmeter
+      dockerfile: ./Dockerfile
     image: 'jmeter-docker:latest'
     command: jmeter -s -n -Jclient.rmi.localport=7000 -Jserver.rmi.localport=60000 -Jserver.rmi.ssl.disable=true
     hostname: slave-2
